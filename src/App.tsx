@@ -78,6 +78,11 @@ function App() {
         <button type="submit" className='cta-primary text-white' disabled={state.submitting}>
           {state.submitting ? 'Processing payment...' : 'SUBMIT REGISTRATION'}
         </button>
+        <button type="button" disabled={state.submitting} className='cta-gray text-black'
+          onClick={() => step == 2 ? setStep(1) : setStep(2)}>
+          Back
+        </button>
+
       </form>
     )
   }
@@ -186,8 +191,8 @@ function App() {
           <img className='absolute -mb-50 right-0 z-0 mt-16' src={Nyc} alt="" style={{ zIndex: -999 }} />
           <div className='top-0 flex justify-center  main-wrapper pt-4 md:pt-32 mt-1 items-center flex-col pb-56'>
 
-            <div className=''>
-              <p className='title-1 font-semibold'>SAM Registration Made Easy</p>
+            <div className='flex flex-col items-center'>
+              <p className='title-1 font-semibold flex flex-col md:flex-row'>SAM Registration Made Easy</p>
               <p className='sub-sm pt-4 text-center px-2'>Streamline Your Federal Registration and Contracting Process with USFCR</p>
             </div>
             {step === 3 ? (<>
@@ -269,7 +274,7 @@ function App() {
                         errors={state.errors}
                       />
                     </div>
-                    <div className='w-full'>
+                    {/* <div className='w-full'>
                       <label htmlFor="text" className="input-label uppercase">WHY ARE YOU STARTING A NEW SAM REGISTRATION?</label><br />
                       <select name="reason" id="reason" value={formData.reason} onChange={handleInputChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 outline-none
@@ -285,7 +290,7 @@ function App() {
                         field="reason"
                         errors={state.errors}
                       />
-                    </div>
+                    </div> */}
                   </>)
                   : step == 2 ? (
                     <div className='flex flex-col gap-4'>

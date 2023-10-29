@@ -17,7 +17,7 @@
 /* Media query for mobile devices */
 @media screen and (max-width: 768px) {
   .title-1 {
-    font-size: 45px;
+    font-size: 40px;
     /* Adjust the font size for mobile devices as per your preference */
   }
 }
@@ -65,6 +65,18 @@ input {
   /* Adjust the negative value as needed */
   background-repeat: no-repeat;
   background-size: 65% cover;
+}
+
+.cta-gray{
+  border-radius: 10px;
+  background: #dddddd;
+  padding: 12px 40px;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .cta-primary {
