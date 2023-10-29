@@ -14,6 +14,14 @@
   line-height: normal;
 }
 
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  .title-1 {
+    font-size: 45px;
+    /* Adjust the font size for mobile devices as per your preference */
+  }
+}
+
 .sub-sm {
   color: #000;
   text-align: center;

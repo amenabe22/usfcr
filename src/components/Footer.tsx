@@ -1,11 +1,11 @@
-import Logo from "../assets/logo2.png";
+import Logo from "../assets/govguide.svg";
 
 export const Footer = () => {
     return (
-        <div className="main-footer" style={{ marginTop: '25rem' }}>
+        <div className="main-footer mt-24">
             <img src={Logo} alt="Logo" className="h-10 w-auto" />
             <div style={{ height: 58 }}></div>
-            <div className="flex justify-between items-center">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
                 <div>
                     <p className="footer-title">QUICK LINKS</p>
                     <div className="pt-6">

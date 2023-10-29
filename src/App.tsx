@@ -34,6 +34,7 @@ const useOptions = () => {
 function App() {
   const [state, handleSubmit] = useForm("maygvvrb");
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false)
   const [finished, setFinished] = useState(false)
   const nextStep = () => setStep(step + 1);
 
@@ -68,7 +69,7 @@ function App() {
         </div>
         <div className='flex flex-col'>
           <label className='pb-2'>Card details</label>
-          <CardElement onChange={stripeInputChanged} options={options} />
+          <CardElement options={options} />
           <ValidationError
             field="paymentMethod"
             errors={state.errors}
@@ -92,6 +93,7 @@ function App() {
     }
     // Send the form data to Formspree via a fetch request
     try {
+      setLoading(true)
       const response = await fetch('https://formspree.io/f/maygvvrb', {
         method: 'POST',
         body: form,
@@ -100,10 +102,10 @@ function App() {
         }
       });
 
+      setLoading(false)
       if (response.ok) {
         // Handle a successful submission, e.g., show a success message
         console.log('Form submitted successfully!');
-        alert("SUCCESS")
         setStep(3)
       } else {
         // Handle an error in submission, e.g., display an error message
@@ -149,9 +151,9 @@ function App() {
 
         </>
       ) : finished ? (<>
-        <div className='w-full h-auto'>
-          <img className='absolute -mb-50 -mt-36 right-0 z-0' src={NycBlur} alt="" style={{ zIndex: -999 }} />
-          <div className='top-0 flex justify-center  main-wrapper pt-60 mt-1 items-center flex-col pb-56'>
+        <div className='w-full'>
+          <img className='absolute mt-16 right-0 z-0' src={NycBlur} alt="" style={{ zIndex: -999 }} />
+          <div className='top-0 flex justify-center main-wrapper pt-32 md:pt-60 mt-1 items-center flex-col pb-56'>
 
             <div className='flex flex-col items-center justify-center gap-5'>
               <div>
@@ -181,24 +183,24 @@ function App() {
         </div>
       </>) : (
         <div className='w-full h-auto'>
-          <img className='absolute -mb-50 -mt-36 right-0 z-0' src={Nyc} alt="" style={{ zIndex: -999 }} />
-          <div className='top-0 flex justify-center  main-wrapper pt-60 mt-1 items-center flex-col pb-56'>
+          <img className='absolute -mb-50 right-0 z-0 mt-16' src={Nyc} alt="" style={{ zIndex: -999 }} />
+          <div className='top-0 flex justify-center  main-wrapper pt-4 md:pt-32 mt-1 items-center flex-col pb-56'>
 
             <div className=''>
               <p className='title-1 font-semibold'>SAM Registration Made Easy</p>
-              <p className='sub-sm pt-4 text-center'>Streamline Your Federal Registration and Contracting Process with USFCR</p>
+              <p className='sub-sm pt-4 text-center px-2'>Streamline Your Federal Registration and Contracting Process with USFCR</p>
             </div>
             {step === 3 ? (<>
-              <FormspreeProvider stripePK="pk_test_51O6452Bh7vZ8JDPWaM9LOKj3IGXcgzC5xaJLRXgSFUPmoy8AwkCnixA1eAYCO68QrTzg6j0qr1aftJbkPjooGJ0W00C954Bp6N">
+              <FormspreeProvider stripePK="pk_test_51O6452Bh7vZ8JDPWYfcVFNMnFBj3lbpSMrGRUhielQ9DK3ktfz5ucwvlzio214Re04KfRG3SygJ31fbqZOPjV8q600v1b6wwXF">
                 <PaymentForm />
               </FormspreeProvider>
             </>) : (
 
-              <form onSubmit={handleNext} className='w-full max-w-7xl mt-10 form-wrapper p-10 flex flex-col gap-6'>
+              <form onSubmit={handleNext} className='w-full max-w-7xl mt-10 form-wrapper p-4 md:p-10 flex flex-col gap-6'>
                 {step == 1 ? (
 
                   <>
-                    <div className='flex items-center gap-10 bg-white w-full'>
+                    <div className='flex md:flex-row flex-col items-center gap-10 bg-white w-full'>
                       <div className='w-full'>
                         <div className="">
                           <label htmlFor="firstName" className="input-label">First Name</label>
@@ -271,7 +273,7 @@ function App() {
                       <label htmlFor="text" className="input-label uppercase">WHY ARE YOU STARTING A NEW SAM REGISTRATION?</label><br />
                       <select name="reason" id="reason" value={formData.reason} onChange={handleInputChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 outline-none
-                 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4">
                         <option disabled>Select Options</option>
                         <option value="op1">Option 1</option>
                         <option value="op1">Option 2</option>
@@ -312,7 +314,7 @@ function App() {
                         />
                       </div>
                       {/* City & Country */}
-                      <div className='flex items-center gap-10 bg-white w-full'>
+                      <div className='flex flex-col md:flex-row items-center gap-10 bg-white w-full'>
                         <div className='w-full'>
                           <div className="">
                             <label htmlFor="city" className="input-label">City</label>
@@ -342,7 +344,7 @@ function App() {
 
                       </div>
                       {/* State & Zip Code */}
-                      <div className='flex items-center gap-10 bg-white w-full'>
+                      <div className='flex flex-col md:flex-row items-center gap-10 bg-white w-full'>
                         <div className='w-full'>
                           <div className="">
                             <label htmlFor="state" className="input-label">STATE</label>
@@ -378,7 +380,7 @@ function App() {
                     </div>
                 }
 
-                <div className='flex justify-end gap-2'>
+                <div className='flex flex-col md:flex-row justify-end gap-2'>
                   {
                     step != 1 ? (<button type="button" disabled={state.submitting} className='cta-primary text-white'
                       onClick={() => step == 2 ? setStep(1) : setStep(2)}>
@@ -386,9 +388,9 @@ function App() {
                     </button>
                     ) : null
                   }
-                  <button type="submit" disabled={state.submitting} className='cta-primary text-white'
+                  <button type="submit" disabled={state.submitting && loading} className='cta-primary text-white'
                   >
-                    CONTINUE
+                    {loading ? (<p>Loading...</p>) : (<p>CONTINUE</p>)}
                   </button>
                 </div>
               </form>

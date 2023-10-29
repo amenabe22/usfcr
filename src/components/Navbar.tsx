@@ -1,4 +1,4 @@
-import Logo from "../assets/logo.png";
+import Logo from "../assets/govguide.svg";
 
 export const Navbar = () => {
     return (
