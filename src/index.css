@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title-1 {
+  color: #000;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sub-sm {
+  color: #000;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.input-label {
+  color: #373632;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  /* 200% */
+  text-transform: uppercase;
+}
+
+input {
+  outline: none;
+}
+
+.form-wrapper {
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 0px 12px 0px rgba(155, 169, 191, 0.52);
+}
+
+.main-navbar {
+  padding: 31px 109px;
+  box-shadow: 0px 0px 12px 0px rgba(155, 169, 191, 0.52);
+}
+
+.main-wrapperx {
+  background: url(./assets/nyc.png), #F9FBFE;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: top right;
+  /* Adjust the negative value as needed */
+  background-repeat: no-repeat;
+  background-size: 65% cover;
+}
+
+.cta-primary {
+  border-radius: 10px;
+  background: #113559;
+  padding: 12px 40px;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.main-footer {
+  background: #113559;
+  padding: 85.9px 78.24px;
+}
+
+.footer-title {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  /* 116.667% */
+  text-transform: uppercase;
+}
+
+.footer-item {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  /* 250% */
+}
+
+input {
+  height: 53px;
+}
+
+.InputElement {
+  height: 53px !important;
+
+}
+
+.payment-txt {
+  color: #373632;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  /* 140% */
+  text-transform: uppercase;
+}
